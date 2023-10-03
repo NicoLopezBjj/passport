@@ -8,12 +8,12 @@ app.set('view engine','ejs')
 
 app.use('/auth',rutasAuth)
 
-app.get('/'),(req,res)=>{
+app.get('/',(req,res)=>{
     res.render('home')
-}
+})
 
 
-app.listen(3700,(req,res)=>{
+app.listen(3700,()=>{
     console.log('servidor ejecutandose')
 })
 
