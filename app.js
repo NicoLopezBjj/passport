@@ -1,5 +1,4 @@
 const express = require ('express')
-
 const rutasAuth=require('./routes/routesAuth')
 const passportSetUp=require('./config/config')
 
