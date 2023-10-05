@@ -18,5 +18,9 @@ passport.use(
             googleId:profile.id,
             username:profile.displayName
         })
+        .save()
+        .then((valor)=>{
+            console.log('el usuario se creo con exito',valor)
+        })
     })
 )
