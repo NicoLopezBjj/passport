@@ -3,6 +3,17 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const keys=require('./keys')
 const User=require('../models/user-model')
 
+
+passport.serializeUser((valor,done)=>{
+    done(valor.id)
+})
+
+passport.deserializeUser((id,done)=>{
+    User.findById(id).then((usuario)=>{
+        done(null,usuario)
+    })
+})
+
 passport.use(
     new GoogleStrategy({
         // opciones de estrategias de google
@@ -27,6 +38,7 @@ passport.use(
                 .save()
                 .then((valor)=>{
                     console.log('el usuario se creo con exito',valor)
+                    done(null,valor)
                 })
             }
         })
