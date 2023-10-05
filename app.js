@@ -9,9 +9,17 @@ const app = express()
 
 app.set('view engine','ejs')
 
-mongoose.connect(keys.mongodb.dbURL,()=>{
-    console.log('se conecto a mongo')
-})
+const connectToMongoDB = async () => {
+    try {
+        await mongoose.connect(keys.mongodb.dbURL);
+        console.log('Conectado a MongoDB');
+    } catch (error) {
+        console.error('Error al conectar a MongoDB:', error);
+    }
+}
+
+connectToMongoDB();
+
 
 app.use('/auth',rutasAuth)
 
