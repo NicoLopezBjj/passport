@@ -11,16 +11,24 @@ passport.use(
         clientSecret:keys.google.clientSecret,
         callbackURL:'/auth/google/redirect',
     },(accesToken,refreshToken,profile,done)=>{
-        // funcion callback de passport
-        console.log('datos del usuario')
-        console.log(profile)
-        new User({
-            googleId:profile.id,
-            username:profile.displayName
-        })
-        .save()
-        .then((valor)=>{
-            console.log('el usuario se creo con exito',valor)
+        // funcion callback de passporte
+
+        // el usuario esta ya registrado con ese email
+        User.findOne({googleId:profile.id}).then((dato)=>{
+            if(dato){
+                console.log('El usuario ya esta registrado')    
+            }else{  
+                console.log('datos del usuario')
+                console.log(profile)
+                new User({
+                    googleId:profile.id,
+                    username:profile.displayName
+                })
+                .save()
+                .then((valor)=>{
+                    console.log('el usuario se creo con exito',valor)
+                })
+            }
         })
     })
 )
