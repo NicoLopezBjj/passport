@@ -4,6 +4,7 @@ const passportSetUp=require('./config/config')
 const keys= require('./config/keys')
 const mongoose=require('mongoose')
 const cookieSession=require('cookie-session')
+const profilesRoutes=require('./routes/profile-router')
 
 
 const app = express()
@@ -32,6 +33,7 @@ connectToMongoDB();
 
 
 app.use('/auth',rutasAuth)
+app.use('/profile',profilesRoutes)
 
 app.get('/',(req,res)=>{
     res.render('home')

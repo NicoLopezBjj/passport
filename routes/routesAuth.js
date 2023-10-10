@@ -14,7 +14,7 @@ router.get('/google',passport.authenticate('google',{
 }))
 
 router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
-    res.send('llegaste a la URL de redireccion')
+    res.redirect('/profile')
 })
 
 module.exports= router
