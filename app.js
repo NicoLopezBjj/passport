@@ -5,7 +5,7 @@ const keys= require('./config/keys')
 const mongoose=require('mongoose')
 const cookieSession=require('cookie-session')
 const profilesRoutes=require('./routes/profile-router')
-
+const passport=require('passport')
 
 const app = express()
 
@@ -31,14 +31,12 @@ const connectToMongoDB = async () => {
 
 connectToMongoDB();
 
-
 app.use('/auth',rutasAuth)
 app.use('/profile',profilesRoutes)
 
 app.get('/',(req,res)=>{
     res.render('home')
 })
-
 
 app.listen(3700,()=>{
     console.log('servidor ejecutandose')
