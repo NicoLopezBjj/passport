@@ -17,7 +17,7 @@ app.use(cookieSession({
 }
 ))
 
-app.use(passport.initializate())
+app.use(passport.initialize())
 app.use(passport.session())
 
 const connectToMongoDB = async () => {

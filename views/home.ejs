@@ -42,8 +42,11 @@
 <body>
     <nav>
         <ul>
+            <% if (user){%>
             <li><a href="/auth/logout">Logout</a></li>
+            <%}else{%>
             <li><a href="/auth/login">Login</a></li>
+            <%}%>
             <li><a href="/">Inicio</a></li>
         </ul>
     </nav>

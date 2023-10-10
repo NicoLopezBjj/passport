@@ -6,7 +6,8 @@ router.get('/login', (req,res)=>{
 })
 
 router.get('/login'), (req,res)=>{
-    res.send('se deslogueo')
+    req.logOut()
+    res.redirect('/')
 }
 
 router.get('/google',passport.authenticate('google',{

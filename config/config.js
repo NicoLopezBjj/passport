@@ -5,7 +5,7 @@ const User=require('../models/user-model')
 
 
 passport.serializeUser((valor,done)=>{
-    done(valor.id)
+    done(null, valor.id)
 })
 
 passport.deserializeUser((id,done)=>{
