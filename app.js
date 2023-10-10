@@ -16,6 +16,9 @@ app.use(cookieSession({
 }
 ))
 
+app.use(passport.initializate())
+app.use(passport.session())
+
 const connectToMongoDB = async () => {
     try {
         await mongoose.connect(keys.mongodb.dbURL);
